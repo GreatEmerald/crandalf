@@ -24,7 +24,7 @@ jobs:
         with:
           path: package
           # change the repo below to yours
-          repository: bfast2/bfast
+          repository: bfast2/bfast@check-fixes
           # ref: master
 
       - name: Clean up .Renviron
