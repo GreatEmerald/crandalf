@@ -1,14 +1,8 @@
 # markdown is for xfun::rev_check() to generate the check summary in HTML;
 # rmarkdown is installed just in case the package has R Markdown vignettes
-pkgs = c('markdown', 'rmarkdown')
+pkgs = c('markdown', 'rmarkdown', 'strucchangeRcpp', 'zoo', 'forecast', 'Rcpp', 'Rdpack')
 for (i in pkgs) {
   if (!requireNamespace(i, quietly = TRUE)) install.packages(i)
-}
-
-# if the event is not pull request, only install/update packages
-if (Sys.getenv('GITHUB_EVENT_NAME') != 'pull_request') {
-  message('Reverse dependency checks are only performed on pull requests...')
-  writeLines(read.csv('.github/versions.csv')[, 1], '00ignore')
 }
 
 pkgs = readLines('latex-packages.txt')
